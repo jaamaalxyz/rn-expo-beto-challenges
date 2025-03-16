@@ -1,3 +1,4 @@
+import InfoCard from '@/components/InfoCard';
 import { Text, View } from 'react-native';
 
 export default function Index() {
@@ -9,7 +10,10 @@ export default function Index() {
         alignItems: 'center',
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <InfoCard title="Hello" />
+      <InfoCard title="Hello" subtitle="World" />
+      <InfoCard title="Hello" subtitle="World" showImage />
+      <InfoCard title="Hello" showImage />
     </View>
   );
 }
