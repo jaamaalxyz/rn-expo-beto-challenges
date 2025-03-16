@@ -1,19 +1,18 @@
-import InfoCard from '@/components/InfoCard';
-import { Text, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
+import SwappableCard from '@/components/SwappableCard';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import ThemedText from '@/components/ThemedText';
+import { ThemeProvider } from '@/context/ThemeProvider';
+import ThemedButton from '@/components/ThemedButton';
+import ThemeToggleSwitch from '@/components/ThemeToggleSwitch';
+import RootComponent from '@/components/RootComponent';
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <InfoCard title="Hello" />
-      <InfoCard title="Hello" subtitle="World" />
-      <InfoCard title="Hello" subtitle="World" showImage />
-      <InfoCard title="Hello" showImage />
-    </View>
+    <GestureHandlerRootView>
+      <ThemeProvider>
+        <RootComponent />
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
