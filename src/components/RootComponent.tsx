@@ -1,12 +1,28 @@
 import { Alert, StyleSheet, View } from 'react-native';
-import ThemedText from './ThemedText';
-import SwappableCard from './SwappableCard';
 import ThemeToggleSwitch from './ThemeToggleSwitch';
 import ThemedButton from './ThemedButton';
 import { useTheme } from '@/context/ThemeProvider';
+import { useAuth } from '@/context/AuthProvider';
 
-export default function RootComponent() {
+export default function HomeContainer() {
   const { theme } = useTheme();
+  const { signOut } = useAuth();
+
+  const onSignOut = () => {
+    Alert.alert('Sign Out', 'Are you sure you want to sign out?', [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      {
+        text: 'Sign Out',
+        style: 'destructive',
+        onPress: () => {
+          signOut();
+        },
+      },
+    ]);
+  };
 
   return (
     <View
@@ -17,15 +33,8 @@ export default function RootComponent() {
         styles.container,
       ]}
     >
-      <ThemedText text="Hello, world!" />
-      <SwappableCard />
       <ThemeToggleSwitch />
-      <ThemedButton
-        title="Click Me!"
-        onPress={() => {
-          Alert.alert('Hello, world!', 'This is an alert');
-        }}
-      />
+      <ThemedButton title="Sign Out" onPress={onSignOut} bgColor={'red'} />
     </View>
   );
 }

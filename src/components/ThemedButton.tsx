@@ -5,15 +5,21 @@ import ThemedText from './ThemedText';
 interface ButtonProps {
   title: string;
   onPress: () => void;
+  bgColor?: string | undefined;
 }
 
-export default function ThemedButton({ title, onPress }: ButtonProps) {
+export default function ThemedButton({ title, onPress, bgColor }: ButtonProps) {
   const { theme } = useTheme();
 
   return (
     <Pressable
       onPress={onPress}
-      style={[styles.button, { backgroundColor: theme.colors.primary }]}
+      style={[
+        {
+          backgroundColor: bgColor ?? theme.colors.primary,
+        },
+        styles.button,
+      ]}
     >
       <ThemedText text={title} />
     </Pressable>
