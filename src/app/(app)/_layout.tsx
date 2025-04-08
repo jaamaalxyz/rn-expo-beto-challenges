@@ -5,7 +5,6 @@ import { ActivityIndicator, View } from 'react-native';
 
 export default function AppLayout() {
   const { user, isLoading } = useAuth();
-  console.log('user', user);
 
   if (isLoading) {
     return (

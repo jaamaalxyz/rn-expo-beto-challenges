@@ -1,10 +1,10 @@
 import ThemedButton from '@/components/ThemedButton';
 import { useAuth } from '@/context/AuthProvider';
-import { useRouter } from 'expo-router';
-import { View } from 'react-native';
+import { Redirect, useRouter } from 'expo-router';
+import { ActivityIndicator, View } from 'react-native';
 
 export default function SignIn() {
-  const { signIn } = useAuth();
+  const { user, isLoading, signIn } = useAuth();
 
   const router = useRouter();
 
@@ -16,6 +16,18 @@ export default function SignIn() {
 
     router.push('/(app)/(tabs)');
   };
+
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1 }}>
+        <ActivityIndicator size={'large'} color={'#fff'} />
+      </View>
+    );
+  }
+
+  if (user) {
+    <Redirect href="/(app)/(tabs)" />;
+  }
 
   return (
     <View

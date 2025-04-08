@@ -16,9 +16,7 @@ import ThemedButton from './ThemedButton';
 export default function ProfileForm() {
   const { control, handleSubmit } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log('Form Data:', data);
-  };
+  const onSubmit = (data: any) => {};
 
   return (
     <KeyboardAvoidingView
